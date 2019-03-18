@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-import {HorizontalScroll } from "../../../commonJsx"
+import {HorizontalScroll } from "../../../../commonJsx"
 import axios from 'axios';
 
 import "./style.less"

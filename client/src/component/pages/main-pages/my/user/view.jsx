@@ -1,5 +1,5 @@
 import React,{ Component } from "react"
-import {rightWhiteIcon,sexIcon,lvIcon} from "../../../icons"
+import {rightWhiteIcon,sexIcon,lvIcon} from "../../../../icons"
 import axios from 'axios';
 
 import "./style.less"

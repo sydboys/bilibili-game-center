@@ -1,7 +1,7 @@
 import React,{Component} from "react"
 import "./style.less"
 
-import {nomsgIcon} from "../../icons"
+import {nomsgIcon} from "../../../icons"
 
 class MsgPage extends Component {
     constructor(){

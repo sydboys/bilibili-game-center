@@ -1,8 +1,8 @@
 import React,{Component} from "react";
 import axios from "axios";
-import {eyeGrayIcon,goodGrayIcon} from "../../../icons"
-import {ScrollMonitor} from ".././../../commonFunction"
-import {LoadingBoard} from "../../../commonJsx"
+import {eyeGrayIcon,goodGrayIcon} from "../../../../icons"
+import {ScrollMonitor} from ".././../../../commonFunction"
+import {LoadingBoard} from "../../../../commonJsx"
 
 import "./style.less";
 

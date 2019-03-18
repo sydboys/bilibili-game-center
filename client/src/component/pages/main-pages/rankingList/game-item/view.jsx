@@ -1,5 +1,5 @@
 import React from "react";
-import {fiveStarIcon} from "../../../icons" 
+import {fiveStarIcon} from "../../../../icons" 
 import './style.less';
 const GameItem =(props)=>{
     var data =props.data;

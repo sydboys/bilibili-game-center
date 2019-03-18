@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-import {playIcon} from "../../icons"
+import {playIcon} from "../../../icons"
 import "./style.less"
 
 class GamePage extends Component {

@@ -3,24 +3,23 @@
 ## 简介
 使用react高仿的bilibili游戏中心。
 
-客户端使用es写的，新的ts版本再master分支。
+客户端使用es写的，新的ts版本在master分支。
 
 <img src="./doc/home.jpg" width="280px" > <img src="./doc/rank.jpg" width="280px" > <img src="./doc/find.jpg" width="280px" > <br/>
 <img src="./doc/strategy.jpg" width="280px" > <img src="./doc/my.jpg" width="280px" > <img src="./doc/msg.jpg" width="280px" ><br/>
 <img src="./doc/search.jpg" width="280px" >
 ## 读前须知
 * `./server`目录是一个使用express构建的简单的后台服务，用于测试前端请求，启动客户端前应先启动这个server
-```
+```bash
 >cd server
  npm install
  npm start
-
+```
+```bash
 >cd client
  npm insatll
  npm start
 ```
-* 本app中的缓存并不是真正的缓存到本地，是为防止来回切换页面导致数据丢失和页面已经滚动的高度丢失而定义的全局变量（也通过这种手段防止了不必要的数据请求）。
-
 ## 目录结构
 
 ### client的src目录
@@ -29,8 +28,8 @@ src
 └─component
     ├─navBar                #标题栏条
     ├─pages
-    │  ├─commonFunction     #公用函数
-    │  ├─commonJsx          #公共组件
+    │  ├─../commonFunction     #公用函数
+    │  ├─../commonJsx          #公共组件
     │  ├─commonLess         #less变量
     │  ├─icons              #图标和固定图片
     │  ├─link-pages         #次要页面

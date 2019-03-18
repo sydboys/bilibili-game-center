@@ -1,6 +1,6 @@
 import React,{Component} from "react"
 import "./style.less"
-import {nodownloadIcon} from "../../icons"
+import {nodownloadIcon} from "../../../icons"
 
 class DownloadManager extends Component {
     render(){

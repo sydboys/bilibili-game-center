@@ -1,6 +1,6 @@
 import React,{Component} from "react"
 import { Carousel } from 'antd-mobile';
-import { findGift,findRank,findKinds } from "../../../icons"
+import { findGift,findRank,findKinds } from "../../../../icons"
 import axios from 'axios';
 
 import "./style.less"

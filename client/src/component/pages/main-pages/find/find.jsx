@@ -2,7 +2,7 @@ import React,{ Component } from "react"
 import FindHot from "./find-hot"
 import {HListReq,HList} from "./h-list"
 import Special from "./special"
-import {LoadingBoard} from "../../commonJsx"
+import {LoadingBoard} from "../../../commonJsx"
 import axios from "axios"
 
 import "./style.less"

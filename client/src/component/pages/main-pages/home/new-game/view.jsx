@@ -1,7 +1,7 @@
 import React,{ Component } from "react"
-import { rightIcon } from "../../../icons"
+import { rightIcon } from "../../../../icons"
 import { Link } from "react-router-dom"
-import { HorizontalScroll } from "../../../commonJsx"
+import { HorizontalScroll } from "../../../../commonJsx"
 import axios from 'axios';
 import "./style.less"
 
