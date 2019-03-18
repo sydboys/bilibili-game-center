@@ -3,6 +3,8 @@
 ## 简介
 使用react高仿的bilibili游戏中心。
 
+客户端使用es写的，新的ts版本再master分支。
+
 <img src="./doc/home.jpg" width="280px" > <img src="./doc/rank.jpg" width="280px" > <img src="./doc/find.jpg" width="280px" > <br/>
 <img src="./doc/strategy.jpg" width="280px" > <img src="./doc/my.jpg" width="280px" > <img src="./doc/msg.jpg" width="280px" ><br/>
 <img src="./doc/search.jpg" width="280px" >
