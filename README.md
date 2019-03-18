@@ -46,9 +46,6 @@ src
     │                  
     └─titleBar              #下方导航条
 ```
-
-                    
-
 ## 构建
 * ` ./client ` 目录 ` npm run build `
 * 拷贝 ` ./client/build/ ` 下的所有内容到 ` ./server/public `
