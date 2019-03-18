@@ -1,6 +1,6 @@
 import React,{ Component } from "react"
-import { rightIcon,eyeIcon,goodIcon } from "../../../../icons"
-import { HorizontalScroll } from "../../../../commonJsx"
+import { rightIcon,eyeIcon,goodIcon } from "../../../icons"
+import { HorizontalScroll } from "../../../commonJsx"
 import axios from 'axios'
 
 import "./style.less"
@@ -42,12 +42,13 @@ class HotStrategy extends Component {
         super();
         var cacheData = window.appDataCache.home.hotStrategy
         this.state = {
-            data:cacheData?cacheData:[]
+            data:cacheData?cacheData:[]//缓存数据如果存在，就给给state
         }
         this.getData = this.getData.bind(this);
     }
 
     getData(){
+        console.log("<HotStrategy/>,无缓存,请求数据")
         var that = this;
         var CancelToken = axios.CancelToken;
         axios.get('/api/hotstrategy',{
@@ -65,6 +66,7 @@ class HotStrategy extends Component {
 
     componentDidMount(){
         if(this.state.data.length!==0){
+            console.log("<HotStrategy/>,已经加载缓存数据,不请求数据")
             return;
         }
         this.getData();

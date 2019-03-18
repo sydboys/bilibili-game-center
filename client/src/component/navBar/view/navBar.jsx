@@ -1,15 +1,10 @@
 import React,{Component} from "react"
-import {
-    Link,
-    Switch,
-    Route,
-  } from 'react-router-dom'
+import { Link } from "react-router-dom"
 import  { navIcon } from "./icons"
 import "./style.less"
 
-
 //只有一级路由
-class NavBarInner extends Component {
+class NavBar extends Component {
     constructor(){
         super();
         this.actClass = ""
@@ -44,44 +39,51 @@ class NavBarInner extends Component {
 
     render(){
         var path = window.location.pathname;
+        // console.log(path)
         return(
             <div className="nav-bar">
                 <nav>
                     <ul>
                         <li>
-                            <div  className={this.setNavClass(path,"/")}>
-                                <img src={this.setNavIcon(path,"/")} alt=""/>{/*图标没对齐不是css问题，检查图标内容是否在图片正中央*/}
-                                精选
-                            </div>
-                            <Link  to="/"></Link>
+                            
+                            <Link  to="/">
+                                <div  className={this.setNavClass(path,"/")}>
+                                    <img src={this.setNavIcon(path,"/")} alt=""/>{/*图标没对齐不是css问题，检查图标内容是否在图片正中央*/}
+                                    精选
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <div className={this.setNavClass(path,"/rank")}>
-                                <img src={this.setNavIcon(path,"/rank")} alt=""/>
-                                排行
-                            </div>
-                            <Link to="/rank" ></Link>
+                            <Link to="/rank" >
+                                <div className={this.setNavClass(path,"/rank")}>
+                                    <img src={this.setNavIcon(path,"/rank")} alt=""/>
+                                    排行
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <div className={this.setNavClass(path,"/find")}>
-                                <img src={this.setNavIcon(path,"/find")} alt=""/>
-                                发现
-                            </div>
-                            <Link to="/find"></Link>
+                            <Link to="/find">
+                                <div className={this.setNavClass(path,"/find")}>
+                                    <img src={this.setNavIcon(path,"/find")} alt=""/>
+                                    发现
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <div className={this.setNavClass(path,"/strategy")}>
-                                <img src={this.setNavIcon(path,"/strategy")} alt=""/>
-                                攻略
-                            </div>
-                            <Link to="/strategy"></Link>
+                            <Link to="/strategy">
+                                <div className={this.setNavClass(path,"/strategy")}>
+                                    <img src={this.setNavIcon(path,"/strategy")} alt=""/>
+                                    攻略
+                                </div>
+                            </Link>
                         </li>
                         <li>
-                            <div className={this.setNavClass(path,"/my")}>
-                                <img src={this.setNavIcon(path,"/my")} alt=""/>
-                                我的
-                            </div>
-                            <Link to="/my"></Link>
+                            <Link to="/my">
+                                <div className={this.setNavClass(path,"/my")}>
+                                    <img src={this.setNavIcon(path,"/my")} alt=""/>
+                                    我的
+                                </div>
+                            </Link>
                         </li>
                     </ul>
                 </nav>
@@ -90,20 +92,4 @@ class NavBarInner extends Component {
     }
 }
 
-
-const NavOut = ()=>{
-   return (
-    <Switch>
-        <Route exact path="/" component={NavBarInner}/>
-        <Route path="/rank" component={NavBarInner}/>
-        <Route path="/find" component={NavBarInner}/>
-        <Route path="/strategy" component={NavBarInner}/>
-        <Route path="/my" component={NavBarInner}/>
-    </Switch>
-   ) 
-}
-
-
-
-
-export default NavOut;
+export { NavBar }

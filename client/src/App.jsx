@@ -4,7 +4,7 @@ import {
   Route,
 } from 'react-router-dom'
 import { TitleBar } from "./component/titleBar"
-import NavBar from "./component/navBar"
+import { NavBar } from "./component/navBar"
 
 import { 
   Home,
@@ -14,8 +14,6 @@ import {
   My,
   MsgPage,
   SearchPage,
-  DownloadManager,
-  GamePage,
 } from "./component/pages"
 import './App.less';
 
@@ -31,11 +29,15 @@ class App extends Component {
           <Route path="/my" component={My}/>
           <Route path="/msg" component={MsgPage}/>
           <Route path="/search" component={SearchPage}/>
-          <Route path="/download" component={DownloadManager}/>
-          <Route path="/game" component={GamePage}/>
         </Switch>
-        <TitleBar/>{/*title和nav是fixed定位所以要放下面*/}
-        <NavBar/>
+        <TitleBar />{/*title和nav是fixed定位所以要放下面*/}
+        <Switch>
+          <Route exact path="/" component={NavBar}/>
+          <Route path="/rank" component={NavBar}/>
+          <Route path="/find" component={NavBar}/>
+          <Route path="/strategy" component={NavBar}/>
+          <Route path="/my" component={NavBar}/>
+        </Switch>
       </div>
     );
   }

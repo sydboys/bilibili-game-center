@@ -1,6 +1,6 @@
 import React,{ Component } from "react"
-import { rightIcon } from "../../../../icons"
-import { HorizontalScroll } from "../../../../commonJsx"
+import { rightIcon } from "../../../icons"
+import { HorizontalScroll } from "../../../commonJsx"
 import axios from 'axios';
 import "./style.less"
 
@@ -34,6 +34,7 @@ class HListReq extends Component {
         this.name = this.props.name ;
     }
     getData(){
+        console.log(`<HList/>tag: ${this.props.tag},无缓存,请求数据`)
         var that =this;
         var CancelToken = axios.CancelToken;
         axios.get(that.url, {
@@ -52,13 +53,14 @@ class HListReq extends Component {
 
     componentDidMount(){
         if(this.state.data.length!==0){
+            console.log(`<HList/>tag: ${this.props.tag},已经加载缓存数据,不请求数据`)
             return;
         }
         this.getData();
     }
 
     componentWillUnmount(){
-        if(this.requestCancel){
+        if(this.requestCancel){//如果没执行过this.getData就不会有this.requestCancel。所以要判断
             this.requestCancel(`<HList/>tag: ${this.props.tag},组件卸载拦截请求数据`);
         }
         window.appDataCache.find[this.props.tag]=this.state.data;

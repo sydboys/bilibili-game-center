@@ -2,8 +2,8 @@ import React,{ Component } from "react"
 import GameItem from "./game-item/view"
 import axios from 'axios';
 
-import {ScrollMonitor} from "../../../commonFunction"
-import {LoadingBoard} from "../../../commonJsx"
+import {ScrollMonitor} from "../../commonFunction"
+import {LoadingBoard} from "../../commonJsx"
 
 
 /*前端单条数据

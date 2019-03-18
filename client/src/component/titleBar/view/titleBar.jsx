@@ -11,7 +11,7 @@ var titleLink = {
     msg:"/msg",
     search:"/search",
     more:"",
-    myDownload:"/download",
+    myDownload:"",
     prevMainPage:"/",
 }
 
@@ -116,6 +116,7 @@ class SearchTitle extends Component {
     }
 
     handleChange(e){
+        console.log("c")
         this.setState({
             value:e.target.value
         })
@@ -124,6 +125,9 @@ class SearchTitle extends Component {
     handleSubmit(e){
         console.log("sumbit")
         e.preventDefault()
+        this.setState({
+            value:""
+        })
     }
 
     clear(){
@@ -150,27 +154,6 @@ class SearchTitle extends Component {
     }
 }
 
-const DownloadTitle = ()=>{
-    return (
-        <div className="title-inner">
-            <div className="page-name">下载管理</div>
-            <Link className="left-link" to="/my">
-                <img src={titleIcon.back} alt=""/>
-            </Link>
-        </div>
-    )
-}
-
-const GameTitle = ()=>{
-    return (
-        <div className="title-inner game-title">
-            <div className="back" ><Link to="/" ><img src={titleIcon.leftWhite} alt=""/></Link></div>
-            <div className="share"><img src={titleIcon.menuSpot} alt=""/></div>
-        </div>
-    )
-}
-
-
 class TitleBar extends Component {
     render(){
     if(window.location.pathname !== "/search"){
@@ -186,8 +169,6 @@ class TitleBar extends Component {
                     <Route path="/my" component={MyTitle}/>
                     <Route path="/msg" component={MsgTitle}/>
                     <Route path="/search" component={SearchTitle}/>
-                    <Route path="/download" component={DownloadTitle}/>
-                    <Route path="/game" component={GameTitle}/>
                 </Switch>
             </div>
         )

@@ -1,6 +1,6 @@
 import React from "react"
-import { rightIcon } from "../../../../icons"
-import { HorizontalScroll } from "../../../../commonJsx"
+import { rightIcon } from "../../../icons"
+import { HorizontalScroll } from "../../../commonJsx"
 import "./style.less"
 
 //前端单条数据要求

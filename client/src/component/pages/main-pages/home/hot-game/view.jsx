@@ -1,7 +1,6 @@
 import React,{ Component } from "react"
-import { Link } from "react-router-dom"
-import { rightIcon } from "../../../../icons"
-import { HorizontalScroll } from "../../../../commonJsx"
+import { rightIcon } from "../../../icons"
+import { HorizontalScroll } from "../../../commonJsx"
 import axios from 'axios';
 
 import "./style.less"
@@ -16,11 +15,13 @@ import "./style.less"
 
 class GameItem extends Component {
     render(){
+    // console.log(this.props.gameId)
+
         return(
             <li>
-                <Link to={`/game/${this.props.gameId}`}>
+                <a href={`/game/${this.props.gameId}`}>
                     <img src={this.props.img} alt="img"/>
-                </Link>
+                </a>
                 <p className="g-name">{this.props.name}</p>
                 <div className="d-btn">
                     <a href={this.props.DlLink}>下载</a>
@@ -33,14 +34,17 @@ class GameItem extends Component {
 class HotGame extends Component {
     constructor(){
         super();
-        var cacheData = window.appDataCache.home.hotGame;
+        var cacheData = window.appDataCache.home.hotGame
+
         this.state={
-            data: cacheData?cacheData:[]    
+            data:cacheData?cacheData:[]//缓存数据如果存在，就给给state
         }
-        this.getData = this.getData.bind(this);
+        this.getData = this.getData.bind(this)
     }
 
     getData(){
+        //axios
+        console.log("<HotGame/>,无缓存,请求数据")
         var that = this;
         var CancelToken = axios.CancelToken;
         axios.get('/api/hotgame',{
@@ -58,25 +62,28 @@ class HotGame extends Component {
     }
     componentDidMount(){
         if(this.state.data.length!==0){
+            console.log("<HotGame/>,已经加载缓存数据,不请求数据")
             return;
         }
         this.getData()
     }
 
     componentWillUnmount(){
-        if(this.requestCancel){
+        if(this.requestCancel){//如果没执行过this.getData就不会有this。requestCancel。所以要判断
             this.requestCancel("<HotGame/>,组件卸载拦截请求数据");
         }
-        window.appDataCache.home.hotGame = this.state.data;
+        window.appDataCache.home.hotGame = this.state.data//设置缓存
+
     }
 
     render(){
-        var data = this.state.data;
+        var data = this.state.data
+        // console.log(data)
         return(
             <div className="hot-game">
                 <div className="hot-game-title">
                     精品推荐
-                    <Link to="/rank"><img src={rightIcon} alt=""/></Link>
+                    <a href="/rank"><img src={rightIcon} alt=""/></a>
                 </div>
                 <div className="hot-game-list">
                     <HorizontalScroll>

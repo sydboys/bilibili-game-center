@@ -1,7 +1,6 @@
 import React,{ Component } from "react"
-import { rightIcon } from "../../../../icons"
-import { Link } from "react-router-dom"
-import { HorizontalScroll } from "../../../../commonJsx"
+import { rightIcon } from "../../../icons"
+import { HorizontalScroll } from "../../../commonJsx"
 import axios from 'axios';
 import "./style.less"
 
@@ -14,9 +13,9 @@ const GameItem = (props)=>{
     var data = props.data;
     return(
         <li>
-            <Link to={`/game/${data.gameId}`}>
+            <a href={`/game/${data.gameId}`}>
                 <img src={data.icon} alt=""/>
-            </Link>
+            </a>
             <p className="g-name">{data.name}</p>
         </li>
     )
@@ -28,11 +27,12 @@ class NewGame extends Component {
         super();
         var cacheData = window.appDataCache.home.newGame
         this.state = {
-            data:cacheData?cacheData:[]
+            data:cacheData?cacheData:[]//缓存数据如果存在，就给给state
         }
         this.getData = this.getData.bind(this);
     }
     getData(){
+        console.log("<NewGame/>,无缓存,请求数据")
         var that =this;
         var CancelToken = axios.CancelToken;
         axios.get('/api/newgame', {
@@ -51,13 +51,14 @@ class NewGame extends Component {
 
     componentDidMount(){
         if(this.state.data.length!==0){
+            console.log("<NewGame/>,已经加载缓存数据,不请求数据")
             return;
         }
         this.getData();
     }
 
     componentWillUnmount(){
-        if(this.requestCancel){
+        if(this.requestCancel){//如果没执行过this.getData就不会有this.requestCancel。所以要判断
             this.requestCancel("<NewGame/>,组件卸载拦截请求数据");
         }
         window.appDataCache.home.newGame = this.state.newGame//设置缓存

@@ -2,7 +2,7 @@ import React,{ Component } from "react"
 import FindHot from "./find-hot"
 import {HListReq,HList} from "./h-list"
 import Special from "./special"
-import {LoadingBoard} from "../../../commonJsx"
+import {LoadingBoard} from "../../commonJsx"
 import axios from "axios"
 
 import "./style.less"
@@ -20,6 +20,7 @@ class Find extends Component {
         this.getData = this.getData.bind(this)
     }
     getData(_,laodingToRetry){
+        console.log(`<Find/>,无缓存,请求数据`)
         var that =this;
         var CancelToken = axios.CancelToken;
         axios.get("/api/find/list", {
@@ -57,6 +58,7 @@ class Find extends Component {
         }    
 
         if(this.state.data.length!==0){
+            console.log(`<Find/>,已经加载缓存数据,不请求数据`)
             this.setState({haveAnyMore:false})
             return;
         }
@@ -67,7 +69,7 @@ class Find extends Component {
         window.appDataCache.find.st = scrollTop;//保存页面位置
         document.documentElement.scrollTop = document.body.scrollTop = 0;//设置为0，防止切换到其他页面后不在顶端
 
-        if(this.requestCancel){
+        if(this.requestCancel){//如果没执行过this.getData就不会有this.requestCancel。所以要判断
             this.requestCancel(`<Find/>,组件卸载拦截请求数据`);
         }
         window.appDataCache.find.data = this.state.data;

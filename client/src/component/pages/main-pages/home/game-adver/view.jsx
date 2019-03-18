@@ -1,7 +1,8 @@
 import React,{ Component } from "react"
-import { starIcon } from "../../../../icons"
-import {ScrollMonitor} from "../../../../commonFunction/"
-import {LoadingBoard} from "../../../../commonJsx"
+import { starIcon } from "../../../icons"
+import {ScrollMonitor} from "../../../commonFunction"
+import {LoadingBoard} from "../../../commonJsx"
+
 
 import axios from 'axios';
 
@@ -67,6 +68,7 @@ class GameAdver extends Component {
     }
 
     getData(_,laodingToRetry){
+        console.log("<GameAdver/>,无缓存或加载新数据，请求数据")
         var that =this;
         if(this.state.HaveAnyMore){//服务端还有数据时才加载
             var CancelToken = axios.CancelToken;
@@ -106,6 +108,7 @@ class GameAdver extends Component {
                 }else{
                     //非服务器响应错误的error
                     console.log(error.message);
+                    //这里error.message就是requestCancel里设置的消息
                 }
             });
         }
@@ -114,6 +117,7 @@ class GameAdver extends Component {
     componentDidMount(){
         this.scrollMonitor = new ScrollMonitor(this.getData);
         if(this.state.data.length!==0){
+            console.log("<GameAdver/>,已经加载缓存数据,不请求数据");
             this.scrollMonitor.StartMonitor();
             return;
         }
@@ -122,7 +126,7 @@ class GameAdver extends Component {
     }
 
     componentWillUnmount(){
-        if(this.requestCancel){
+        if(this.requestCancel){//如果没执行过this.getData就不会有this。requestCancel。所以要判断
             this.requestCancel("<GameAdver/>,组件卸载拦截请求数据");
         }
         this.scrollMonitor.StopMonitor()

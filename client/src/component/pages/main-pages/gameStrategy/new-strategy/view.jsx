@@ -1,8 +1,8 @@
 import React,{Component} from "react";
 import axios from "axios";
-import {eyeGrayIcon,goodGrayIcon} from "../../../../icons"
-import {ScrollMonitor} from ".././../../../commonFunction"
-import {LoadingBoard} from "../../../../commonJsx"
+import {eyeGrayIcon,goodGrayIcon} from "../../../icons"
+import {ScrollMonitor} from ".././../../commonFunction"
+import {LoadingBoard} from "../../../commonJsx"
 
 import "./style.less";
 
@@ -92,6 +92,7 @@ class NewStrategy extends Component {
                     return;
                 }
                 that.setState({isRequestFailed:true});
+                console.log("服务器出错，点击刷新")
             } else {
                 console.log(error)
             }
@@ -101,6 +102,7 @@ class NewStrategy extends Component {
     componentDidMount(){
         this.scrollMonitor = new ScrollMonitor(this.getData)
         if(this.state.data.length !==0){
+            console.log("<NewStragety>,加载缓存，暂不请求数据");
             this.scrollMonitor.StartMonitor();
             return;
         }

@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-import {HorizontalScroll } from "../../../../commonJsx"
+import {HorizontalScroll } from "../../../commonJsx"
 import axios from 'axios';
 
 import "./style.less"
@@ -35,6 +35,7 @@ class Special extends Component{
 
 
     getData(){
+        console.log("<Special/>,无缓存,请求数据")
         var that =this;
         var CancelToken = axios.CancelToken;
         axios.get('/api/find/special', {
@@ -53,6 +54,7 @@ class Special extends Component{
     
     componentDidMount(){
         if(this.state.data.length!==0){
+            console.log("<Special/>,已经加载缓存数据,不请求数据")
             return;
         }
         this.getData();

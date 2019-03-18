@@ -1,5 +1,5 @@
 import React,{ Component } from "react"
-import { HorizontalScroll } from "../../../../commonJsx"
+import { HorizontalScroll } from "../../../commonJsx"
 import axios from "axios"
 import "./style.less"
 
@@ -32,6 +32,7 @@ class HotGameStrg extends Component {
     }
     componentDidMount(){
         if(this.state.data.length !== 0){
+            console.log("<HotGameStrg/>加载缓存");
             return;
         }
         this.getData();
